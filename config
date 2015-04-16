@@ -30,6 +30,15 @@ font pango:terminus 8
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
+# Colors for windows
+
+set $gray1 #484848
+set $gray2 #333333
+
+client.focused            $gray1   $gray1   #FFFFFF   #333333
+client.focused_inactive   $gray2   $gray2   #FFFFFF   #000000
+client.unfocused          $gray2   $gray2   #FFFFFF   #000000
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
