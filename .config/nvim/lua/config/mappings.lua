@@ -26,19 +26,19 @@ keyset("n", "<esc>", ":nohlsearch<cr>", {
     noremap = true
 })
 
-keyset("n", "<leader>pv", vim.cmd.Ex) -- Open file explorer
+keyset("n", "<leader>pv", vim.cmd.Ex)                                                    -- Open file explorer
 
-keyset("v", "J", ":m '>+1<CR>gv=gv") -- Move text up and down
-keyset("v", "K", ":m '<-2<CR>gv=gv") -- Move text up and down
+keyset("v", "J", ":m '>+1<CR>gv=gv")                                                     -- Move text up and down
+keyset("v", "K", ":m '<-2<CR>gv=gv")                                                     -- Move text up and down
 
-keyset("n", "J", "mzJ`z") -- Join next line
-keyset("n", "<C-d>", "<C-d>zz") -- Half page down centered
-keyset("n", "<C-u>", "<C-u>zz") -- Half page up centered
-keyset("n", "n", "nzzzv") -- Search but centered
-keyset("n", "N", "Nzzzv") -- Search but centered
+keyset("n", "J", "mzJ`z")                                                                -- Join next line
+keyset("n", "<C-d>", "<C-d>zz")                                                          -- Half page down centered
+keyset("n", "<C-u>", "<C-u>zz")                                                          -- Half page up centered
+keyset("n", "n", "nzzzv")                                                                -- Search but centered
+keyset("n", "N", "Nzzzv")                                                                -- Search but centered
 
-vim.keymap.set("n", "Q", "<nop>") -- Don't need Q
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format) -- Format
+vim.keymap.set("n", "Q", "<nop>")                                                        -- Don't need Q
+vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)                                     -- Format
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- Search and replace
 
@@ -103,7 +103,7 @@ keyset("n", "gr", "<Plug>(coc-references)", {
 -- Use K to show documentation in preview window
 function _G.show_docs()
     local cw = vim.fn.expand('<cword>')
-    if vim.fn.index({'vim', 'help'}, vim.bo.filetype) >= 0 then
+    if vim.fn.index({ 'vim', 'help' }, vim.bo.filetype) >= 0 then
         vim.api.nvim_command('h ' .. cw)
     elseif vim.api.nvim_eval('coc#rpc#ready()') then
         vim.fn.CocActionAsync('doHover')
@@ -111,6 +111,7 @@ function _G.show_docs()
         vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
     end
 end
+
 keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', {
     silent = true
 })
@@ -223,26 +224,7 @@ vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'edito
 -- provide custom statusline: lightline.vim, vim-airline
 vim.opt.statusline:prepend("%{coc#status()}%{get(b:,'coc_current_function','')}")
 
--- Mappings for CoCList
--- code actions and coc stuff
----@diagnostic disable-next-line: redefined-local
-local opts = {
-    silent = true,
-    nowait = true
-}
--- Show all diagnostics
-keyset("n", "<space>a", ":<C-u>CocList diagnostics<cr>", opts)
--- Manage extensions
-keyset("n", "<space>e", ":<C-u>CocList extensions<cr>", opts)
--- Show commands
-keyset("n", "<space>c", ":<C-u>CocList commands<cr>", opts)
--- Find symbol of current document
-keyset("n", "<space>o", ":<C-u>CocList outline<cr>", opts)
--- Search workspace symbols
-keyset("n", "<space>s", ":<C-u>CocList -I symbols<cr>", opts)
--- Do default action for next item
-keyset("n", "<space>j", ":<C-u>CocNext<cr>", opts)
--- Do default action for previous item
-keyset("n", "<space>k", ":<C-u>CocPrev<cr>", opts)
--- Resume latest coc list
-keyset("n", "<space>p", ":<C-u>CocListResume<cr>", opts)
+-- Oil
+vim.keymap.set("n", "<leader>e", function()
+    require("oil").toggle_float()
+end)

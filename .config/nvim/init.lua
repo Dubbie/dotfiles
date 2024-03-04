@@ -1,4 +1,5 @@
-require("config.lazy")
 require("config.options")
+require("config.lazy")
 require("config.mappings")
 require("config.git")
+require("config.text_yank_highlight")
