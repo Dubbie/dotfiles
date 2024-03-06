@@ -1,4 +1,5 @@
-return {
-    'neoclide/coc.nvim',
-    branch = 'release'
-}
+return {}
+-- return {
+--     'neoclide/coc.nvim',
+--     branch = 'release'
+-- }
